@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date: 2021-01-10 17:26:21
+  genre: 
+  score: 1
+  director: MyString
+  description: MyText
+  trailer: MyText
+
+two:
+  name: MyString
+  date: 2021-01-10 17:26:21
+  genre: 
+  score: 1
+  director: MyString
+  description: MyText
+  trailer: MyText
