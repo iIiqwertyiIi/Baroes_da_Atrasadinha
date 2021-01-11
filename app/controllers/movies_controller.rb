@@ -1,18 +1,18 @@
 class MoviesController < ApplicationController
   def index
-    @movie = movie.all
+    @movies = Movie.all
   end
 
   def show
-    @movie = movie.find(params[:id])
+    @movie = Movie.find(params[:id])
   end
 
   def new
-    @movie = movie.new
+    @movie = Movie.new
   end
 
   def create
-    @movie = movie.new(movie_params)
+    @movie = Movie.new(movie_params)
 
     begin
       @movie.save!
@@ -23,11 +23,11 @@ class MoviesController < ApplicationController
   end
 
   def edit
-    @movie = movie.find(params[:id])
+    @movie = Movie.find(params[:id])
   end
 
   def update
-    @movie = movie.find(params[:id])
+    @movie = Movie.find(params[:id])
 
     begin
       @movie.update!(movie_params)
@@ -38,7 +38,7 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    @movie = movie.find(params[:id])
+    @movie = Movie.find(params[:id])
 
     begin
       @movie.destroy!
@@ -51,6 +51,6 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:name, :date, :score, :director, :description, :trailer)
+    params.require(:movie).permit(:name, :date, :score, :director, :description, :trailer, :genre_id)
   end
 end
