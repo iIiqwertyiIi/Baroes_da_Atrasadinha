@@ -1,9 +1,9 @@
 <h1>Criar Conta</h1>
 
-<%= form_for @user do |f| %>
+<%= form_for @user do |user| %>
   <% if @user.errors.any? %>
     <div class='error_messages'>
-      <h2> invalido </h2>
+      <h2> Dados invalidos </h2>
       <ul>
         <% for message in @user.errors.full_messages %>
           <li><%= message %></li>
@@ -11,17 +11,21 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+<div class="field">
+    <%= user.label :username %>
+    <%= user.text_field :username %>
   </div>
   <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= user.label :email %>
+    <%= user.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <%= user.label :password %>
+    <%= user.password_field :password %>
   </div>
-  <div class="actions"> <%= f.submit 'criar' %> </div>
+  <div class="field">
+    <%= user.label :password_confirmation %>
+    <%= user.password_field :password_confirmation %>
+  </div>
+  <div class="actions"> <%= user.submit 'Criar' %> </div>
 <% end %>
