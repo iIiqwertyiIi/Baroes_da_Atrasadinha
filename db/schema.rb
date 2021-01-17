@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_16_233408) do
+ActiveRecord::Schema.define(version: 2021_01_14_025352) do
 
   create_table "genres", force: :cascade do |t|
     t.string "genres"
@@ -44,19 +44,15 @@ ActiveRecord::Schema.define(version: 2021_01_16_233408) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
+    t.string "username", null: false
     t.string "crypted_password"
     t.string "salt"
-    t.string "admin?"
+    t.boolean "admin?"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "remember_me_token"
     t.datetime "remember_me_token_expires_at"
-    t.integer "genre_id"
-    t.text "biography"
-    t.string "username"
-    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["genre_id"], name: "index_users_on_genre_id"
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
   end
 

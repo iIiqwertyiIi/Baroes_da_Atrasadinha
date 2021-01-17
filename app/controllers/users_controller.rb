@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_args)
     if @user.save
+      redirect_to root_url, :notice => 'Conta criada com sucesso'
     else
       render :new
     end
