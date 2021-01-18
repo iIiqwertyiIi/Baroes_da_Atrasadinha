@@ -16,6 +16,7 @@ class MoviesController < ApplicationController
 
     begin
       @movie.save!
+        redirect_to root_url
     rescue => exception
       flash[:notice] = exception
     ensure
