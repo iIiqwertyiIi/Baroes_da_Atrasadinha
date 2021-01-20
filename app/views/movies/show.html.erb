@@ -1,3 +1,5 @@
-<h2> Teste 1 </h2>
-
-<% @movie.name %>
+<% if is_admin? == true %>
+  <%= render 'show_admin' %>
+<% else %>
+  <%= render 'show_user' %>
+<% end %>

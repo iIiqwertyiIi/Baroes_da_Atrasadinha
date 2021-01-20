@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post 'edit', to: 'users#update'
   resources :users
   resources :sessions
+  resources :movies
+  resources :reviews
   root 'application#homepage'
   #get 'movies', to: 'movies#index', :as => 'movie_index'
   #get 'movies', to: 'movies#create', :as => 'movie_create'

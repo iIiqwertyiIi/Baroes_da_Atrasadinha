@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 2021_01_16_233408) do
     t.datetime "updated_at", null: false
     t.string "remember_me_token"
     t.datetime "remember_me_token_expires_at"
-    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
   end

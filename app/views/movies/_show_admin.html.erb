@@ -1,0 +1,17 @@
+<h1><%= @movie.name %></h1>
+
+<p><%= @movie.director %></p>
+<p><%= @movie.score %></p>
+<p><%= @movie.date %></p>
+<% @genres.each do |genre| %>
+  <% @movie.genre_id.each do |id| %>
+    <% if id == genre.id %>
+      <p><%= genre.name %></p>
+    <% end %>
+  <% end %>
+<% end %>
+<p><%= @movie.description %></p>
+<iframe><%= @movie.trailer %></iframe>
+
+<%= link_to 'Editar Filme', edit_movie_path(@movie) %>
+<%= button_to 'Apagar Filme', movie_path(@movie), method: :delete %>
