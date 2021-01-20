@@ -1,0 +1,20 @@
+<h1><%= @movie.name %></h1>
+
+<p><%= @movie.director %></p>
+<p><%= @movie.score %></p>
+<p><%= @movie.date %></p>
+<% @genres.each do |genre| %>
+  <% @movie.genre_id.each do |id| %>
+    <% if id == genre.id %>
+      <p><%= genre.name %></p>
+    <% end %>
+  <% end %>
+<% end %>
+<p><%= @movie.description %></p>
+<iframe><%= @movie.trailer %></iframe>
+
+<%= link_to 'Escreva sua Review', new_review_path %>
+
+<% @reviews.each do |review| %>
+
+<% end %>
