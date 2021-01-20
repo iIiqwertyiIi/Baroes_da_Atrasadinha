@@ -37,7 +37,7 @@
         </form>
         <div class="user_nav">
           <% if current_user %>
-            Logged in as <%= current_user.username %>.
+            Entrou como: <%= current_user.username %>
             <%= link_to 'Log out', logout_path %>
           <% else %>
             <%= link_to 'Criar conta', signup_path %>
