@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+a{
+  text-decoration: none;
+}
+
+body {
+  background: #E6E8E6;
+  min-height: 100vh;
+}

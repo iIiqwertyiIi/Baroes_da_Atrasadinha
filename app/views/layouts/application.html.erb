@@ -7,19 +7,47 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script src="https://kit.fontawesome.com/2acebabdeb.js" crossorigin="anonymous"></script>
 </head>
 
   <body>
-    <div id ='container'>
-      <div class="user_nav">
-        <% if current_user %>
-          Logged in as <%= current_user.username %>.
-          <%= link_to 'Log out', logout_path %>
-        <% else %>
-          <%= link_to 'Criar conta', signup_path %> ou
-          <%= link_to 'Entrar', login_path %>.
-        <% end %>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex m-auto">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn search-button" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+        <div class="user_nav">
+          <% if current_user %>
+            Entrou como: <%= current_user.username %>
+            <%= link_to 'Log out', logout_path %>
+          <% else %>
+            <%= link_to 'Criar conta', signup_path %>
+            <%= link_to 'Entrar', login_path %>
+          <% end %>
+        </div>
       </div>
+    </div>
+  </nav>
+    <div id ='container'>
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => 'flash_#{name' %>
       <% end %>
