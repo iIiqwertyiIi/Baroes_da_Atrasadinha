@@ -13,9 +13,5 @@
 <p><%= @movie.description %></p>
 <iframe><%= @movie.trailer %></iframe>
 
-<%= link_to 'Escreva sua Review', new_review_path %>
-
-<% @reviews.each do |review| %>
-  <% if review.review == false %>
-  <% end %>
-<% end %>
+<%= link_to 'Editar Filme', edit_movie_path(@movie) %>
+<%= button_to 'Apagar Filme', movie_path(@movie), method: :delete %>
