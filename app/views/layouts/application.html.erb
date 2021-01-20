@@ -7,7 +7,10 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script src="https://kit.fontawesome.com/2acebabdeb.js" crossorigin="anonymous"></script>
+</head>
 
+  <body>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
@@ -30,7 +33,7 @@
         </ul>
         <form class="d-flex m-auto">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">&#x2315</button>
+          <button class="btn search-button" type="submit"><i class="fas fa-search"></i></button>
         </form>
         <div class="user_nav">
           <% if current_user %>
@@ -44,9 +47,6 @@
       </div>
     </div>
   </nav>
-</head>
-
-  <body>
     <div id ='container'>
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => 'flash_#{name' %>

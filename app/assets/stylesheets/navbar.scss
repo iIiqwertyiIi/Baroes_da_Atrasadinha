@@ -1,19 +1,24 @@
 .navbar-expand-lg {
-  background-color: #080708;
+  background-color: #9C0D38;
 }
+
 .user_nav a {
   color: #E6E8E6;
   padding: 5px;
 }
-#navbarDropdown{
+
+#navbarDropdown {
   color: #E6E8E6;
 }
-.navbar-brand{
+
+.navbar-brand {
   color: #E6E8E6;
 }
-.btn-outline-success {
-  transform: scaleX(-1);
-  -moz-transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
-  -ms-transform: scaleX(-1);
+
+.fa-search {
+  color: #E6E8E6;
+}
+
+.btn {
+  border-color: #E6E8E6 !important;
 }
