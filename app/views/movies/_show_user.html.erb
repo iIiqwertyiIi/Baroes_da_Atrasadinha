@@ -16,6 +16,12 @@
 <%= link_to 'Escreva sua Review', new_review_path %>
 
 <% @reviews.each do |review| %>
-  <% if review.review == false %>
+  <% if review.review != nil %>
+    <div>
+      <%= review.score %>
+    </div>
+    <div>
+      <%= review.review %>
+    </div>
   <% end %>
 <% end %>
