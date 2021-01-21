@@ -1,13 +1,4 @@
-<h2> Adicionar novo filme </h2>
-
-<%= form_for @movie do |filme| %>
-
-  <p>Nome: <%= filme.text_field :name %><p>
-  <p>Data: <%= filme.date_field :date %><p>
-  <p>Nota: <%= filme.number_field :score %><p>
-  <p>Dirigido por: <%= filme.text_field :director %><p>
-  <p>Sinopse: <%= filme.text_field :description %><p>
-  <p>Trailer: <%= filme.text_field :trailer %><p>
-
-  <%= filme.submit %>
+<% if is_admin? %>
+  <h2> Adicionar novo filme </h2>
+     <%= render 'show_new' %>
 <% end %>
