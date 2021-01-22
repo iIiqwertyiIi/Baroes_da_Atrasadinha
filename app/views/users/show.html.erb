@@ -1,9 +1,26 @@
 <section id="u-profile">
 <div class="tudo">
-  <div>
 
+  <div class="box">
+    <%= form_with model: current_user, url: :update_perfil_user, method: :patch do |form| %>
+
+      <div class="personal-image">
+        <label class="label">
+          <%= form.file_field :photo %>
+          <figure class="personal-figure">
+            <%if @current_user.photo.attached? %>
+              <%= image_tag @current_user.photo, :class => "personal-avatar", :atl => "Avatar" %>
+            <% else %>
+              <img class="personal-avatar", alt="Avatar" src="https://images-na.ssl-images-amazon.com/images/I/518ms9uDxuL._AC_SL1025_.jpg">
+            <% end %>
+          <figcaption class="personal-figcaption">
+              <img src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png">
+              <div class="actions">
+                <%= form.submit "Enviar" %>
+              </div>
+          <% end %>
+            </figcaption>
+          </figure>
+        </label>
+      </div>
   </div>
-
-</div>
-
-</section>
