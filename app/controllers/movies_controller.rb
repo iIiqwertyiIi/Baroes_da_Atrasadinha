@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+
   def index
     @movies = Movie.all
   end
@@ -13,7 +14,9 @@ class MoviesController < ApplicationController
     @movie = Movie.new
   end
 
+
   def create
+    before_action :admin_authority, except: [:show]
     @movie = Movie.new(movie_params)
 
     begin
