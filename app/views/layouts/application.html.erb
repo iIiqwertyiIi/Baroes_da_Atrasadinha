@@ -39,6 +39,7 @@
           <% if current_user %>
             Entrou como: <%= current_user.username %>
             <%= link_to 'Log out', logout_path %>
+            <%= link_to 'Perfil', perfil_user_path %>
           <% else %>
             <%= link_to 'Criar conta', signup_path %>
             <%= link_to 'Entrar', login_path %>
