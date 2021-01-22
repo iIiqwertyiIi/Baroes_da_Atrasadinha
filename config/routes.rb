@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :sessions
   resources :movies
   resources :reviews
+  resources :genres
   root 'application#homepage'
   #get 'movies', to: 'movies#index', :as => 'movie_index'
   #get 'movies', to: 'movies#create', :as => 'movie_create'

@@ -5,6 +5,7 @@ class GenresController < ApplicationController
 
   def show
     @genre = Genre.find(params[:id])
+    @movies = Movie.all
   end
 
   def new
