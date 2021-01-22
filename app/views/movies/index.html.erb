@@ -1,9 +1,14 @@
+<div class="index-movies">
+
 <h1 class="titulo"> Teste </h1>
 
-<% @movies.each do |filme| %>
-  <h4><%= filme.name %></h4>
-  <h4>Data de lançamento(Brasil):</h4><p><%= filme.date %></p>
-  <h4>Nota:</h4><p><%= filme.score %></p>
-  <h4>Dirigido por:</h4><p><%= filme.director %></p>
-  <h4>Sinopse:</h4><p><%= filme.description %></p>
-<% end %>
+  <% @movies.each do |filme| %>
+    <h4><%= filme.name %></h4>
+    <h6>Data de lançamento(Brasil):</h6><p><%= filme.date %></p>
+    <h6>Nota:</h6><p><%= filme.score %></p>
+    <h6>Dirigido por:</h6><p><%= filme.director %></p>
+    <h6>Sinopse:</h6><p><%= filme.description %></p>
+    <%= link_to 'Mostrar mais', movies_path(filme) %>
+    <hr class="linha-divisao">
+    <% end %>
+    </div>
