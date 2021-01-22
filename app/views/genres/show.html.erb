@@ -1,0 +1,9 @@
+<h1>Filmes de <%= @genre.genres %></h1>
+
+<% @movies.each do |movie| %>
+  <% movie.genre_id.each do |genre| %>
+    <% if genre == @genre.id %>
+      <%= movie.name %>
+    <% end %>
+  <% end %>
+<% end %>
