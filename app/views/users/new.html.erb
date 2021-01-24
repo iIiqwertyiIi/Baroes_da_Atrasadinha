@@ -12,20 +12,23 @@
     </div>
   <% end %>
 <div class="field">
-    <%= user.label :username %>
+    <%= user.label 'Usuário:' %>
     <%= user.text_field :username %>
   </div>
   <div class="field">
-    <%= user.label :email %>
+    <%= user.label 'email:'%>
     <%= user.text_field :email %>
   </div>
   <div class="field">
-    <%= user.label :password %>
+    <%= user.label 'senha:' %>
     <%= user.password_field :password %>
   </div>
   <div class="field">
-    <%= user.label :password_confirmation %>
+    <%= user.label 'confirme a senha:' %>
     <%= user.password_field :password_confirmation %>
   </div>
   <div class="actions"> <%= user.submit 'Criar' %> </div>
+  <div>
+    <%= link_to "Entrar", login_path %>
+  </div>
 <% end %>
