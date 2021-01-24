@@ -1,0 +1,7 @@
+<% if is_admin? == true %>
+  <%= form_with model: @genre do |genre| %>
+    <p>Novo Gênero: <%= genre.text_field :genre %></p>
+  <% end %>
+<% else %>
+  <% redirect_to root_url %>
+<% end %>

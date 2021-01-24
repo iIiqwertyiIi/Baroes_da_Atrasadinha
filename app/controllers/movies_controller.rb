@@ -1,18 +1,22 @@
 class MoviesController < ApplicationController
+
   def index
     @movies = Movie.all
   end
 
   def show
     @movie = Movie.find(params[:id])
-    @genres = Genre.all
+    @genres = Genres.all
+    @users = User.all
   end
 
   def new
     @movie = Movie.new
   end
 
+
   def create
+    before_action :admin_authority, except: [:show]
     @movie = Movie.new(movie_params)
 
     begin

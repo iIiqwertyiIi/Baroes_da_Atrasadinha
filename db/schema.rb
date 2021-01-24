@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_16_233408) do
+ActiveRecord::Schema.define(version: 2021_01_21_211110) do
 
   create_table "genres", force: :cascade do |t|
     t.string "genres"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_01_16_233408) do
     t.string "username", null: false
     t.string "crypted_password"
     t.string "salt"
-    t.boolean "admin?"
+    t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "remember_me_token"
