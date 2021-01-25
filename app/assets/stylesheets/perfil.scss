@@ -1,0 +1,16 @@
+.profile-head {
+  transform: translateY(5rem)
+}
+
+.cover {
+  color: #9C0D38;
+  background-image: url(https://www.colorhexa.com/9c0d38.png);
+  background-size: cover;
+  background-repeat: no-repeat
+}
+
+body {
+  background: #654ea3;
+  background: linear-gradient(to right, #e96443, #904e95);
+  min-height: 100vh
+}

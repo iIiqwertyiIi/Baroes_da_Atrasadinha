@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :logged, except: [:new, :create]
   def new
     @user =  User.new
   end
@@ -7,7 +8,9 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def show; end
+  def show;
+    @user = current_user
+  end
 
   def create
     @user = User.new(user_args)

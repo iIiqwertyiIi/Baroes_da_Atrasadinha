@@ -11,4 +11,10 @@ class ApplicationController < ActionController::Base
       end
   end
 
+  def logged
+    if current_user.nil?
+      flash[:notice] = "LOGA PORA"; redirect_to signup_path
+    end
+  end
+
 end

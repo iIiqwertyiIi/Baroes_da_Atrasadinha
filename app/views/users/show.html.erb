@@ -1,6 +1,68 @@
-<section id="u-profile">
-  <div class="box">
-    <%= form_with model:@review do |perfil| %>
+ <head>
+    <meta charset="utf-8">
+  </head>
+<body><div class="tudo">
+  <%= form_with model: current_user, url: :update_perfil_user, method: :patch do |form| %>
 
-  </div>
-</section>
+    <div class="row py-5 px-4">
+      <div class="col-md-10 mx-auto">
+        <!-- Profile widget -->
+        <div class="bg-white shadow rounded overflow-hidden">
+          <div class="px-4 pt-0 pb-4 cover">
+            <div class="media align-items-end profile-head">
+              <div class="profile mr-3"><%if @current_user.photo.attached? %>
+                  <%= image_tag @current_user.photo, :class => "personal-avatar", :atl => "Avatar" %>
+                <% else %>
+                  <img class="personal-avatar", alt="Avatar" src="https://images-na.ssl-images-amazon.com/images/I/518ms9uDxuL._AC_SL1025_.jpg" width="200px" height="200px">
+                <% end %>
+                </div>
+              <div class="media-body mb-5 text-white">
+                <br><h4 class="mt-0 mb-0"><%=current_user.username%></h4><br>
+              </div>
+            </div>
+          </div>
+          <div class="bg-light p-4 d-flex justify-content-end text-center">
+            <ul class="list-inline mb-0">
+              <div><a href="<%=edit_user_path %>" class="btn btn-outline-danger btn-sm btn-block">Editar perfil</a></div>
+            </ul>
+          </div>
+          <div class="px-4 py-3">
+            <h5 class="mb-0">Biografia</h5>
+            <div class="p-4 rounded shadow-sm bg-light">
+            </div>
+          </div>
+          <div class="py-4 px-4">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <h5 class="mb-0">Análises</h5><a href="#" class="btn btn-link text-muted">mostrar todas</a>
+            </div>
+            <div class="row">
+              <!-- colocar reviews aqui -->
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</body>
+
+ <div class="box">
+   <%= form_with model: current_user, url: :update_perfil_user, method: :patch do |form| %>
+     <div class="personal-image">
+       <label class="label">
+         <%= form.file_field :photo %>
+         <figure class="personal-figure">
+           <%if @current_user.photo.attached? %>
+             <%= image_tag @current_user.photo, :class => "personal-avatar", :atl => "Avatar" %>
+           <% else %>
+             <img class="personal-avatar", alt="Avatar" src="https://elaele.com.br/img/anonimo.png">
+           <% end %>
+           <figcaption class="personal-figcaption">
+             <img src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png">
+             <div class="actions">
+               <%= form.submit "Enviar" %>
+             </div>
+   <% end %>
+   </figcaption>
+   </figure>
+   </label>
+   </div>
