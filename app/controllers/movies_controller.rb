@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
 
   def index
-    @movies = Movie.all
+    @pagy, @records = pagy(Movie.all, items: 1)
   end
 
   def show
