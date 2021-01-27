@@ -1,4 +1,7 @@
 <div class="index-movies">
+  <%if is_admin? == true %>
+  <%= link_to 'Adicionar filme', new_movie_path %>
+    <% end %>
 
 <h1 class="titulo"> Teste </h1>
 

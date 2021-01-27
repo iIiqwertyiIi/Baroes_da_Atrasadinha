@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
 
 
   def create
-    before_action :admin_authority, except: [:show]
+
     @movie = Movie.new(movie_params)
 
     begin
