@@ -12,16 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_01_26_201656) do
 
-  create_table "genre_movies", force: :cascade do |t|
-    t.integer "genre_id"
-    t.integer "movie_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["genre_id"], name: "index_genre_movies_on_genre_id"
-    t.index ["movie_id"], name: "index_genre_movies_on_movie_id"
-
-ActiveRecord::Schema.define(version: 2021_01_25_224824) do
-
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -41,6 +31,15 @@ ActiveRecord::Schema.define(version: 2021_01_25_224824) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "genre_movies", force: :cascade do |t|
+    t.integer "genre_id"
+    t.integer "movie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_genre_movies_on_genre_id"
+    t.index ["movie_id"], name: "index_genre_movies_on_movie_id"
   end
 
   create_table "genres", force: :cascade do |t|
