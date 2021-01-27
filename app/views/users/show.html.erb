@@ -1,7 +1,4 @@
- <head>
-    <meta charset="utf-8">
-  </head>
-<body><div class="tudo">
+<div class="tudo">
   <%= form_with model: current_user, url: :update_perfil_user, method: :patch do |form| %>
 
     <div class="row py-5 px-4">
@@ -9,11 +6,12 @@
         <!-- Profile widget -->
         <div class="bg-white shadow rounded overflow-hidden">
           <div class="px-4 pt-0 pb-4 cover">
-            <div class="media align-items-end profile-head">
-              <div class="profile mr-3"><%if @current_user.photo.attached? %>
-                  <%= image_tag @current_user.photo, :class => "personal-avatar", :atl => "Avatar" %>
+            <div class="media align-items-end profile-head ">
+              <div class="profile mr-3 " >
+                <%if @current_user.photo.attached? %>
+                  <%= image_tag @current_user.photo, :class => "personal-avatar img-thumbnail", :atl => "Avatar"%>
                 <% else %>
-                  <img class="personal-avatar", alt="Avatar" src="https://images-na.ssl-images-amazon.com/images/I/518ms9uDxuL._AC_SL1025_.jpg" width="200px" height="200px">
+                  <img class="personal-avatar ", alt="Avatar" src="https://images-na.ssl-images-amazon.com/images/I/518ms9uDxuL._AC_SL1025_.jpg " width="200px" height="200px">
                 <% end %>
                 </div>
               <div class="media-body mb-5 text-white">
@@ -29,6 +27,12 @@
           <div class="px-4 py-3">
             <h5 class="mb-0">Biografia</h5>
             <div class="p-4 rounded shadow-sm bg-light">
+              <div class="form-group">
+                   <p><%=current_user.biography %></p>
+              </div>
+
+            </div>
+
             </div>
           </div>
           <div class="py-4 px-4">
@@ -42,27 +46,4 @@
       </div>
     </div>
   <% end %>
-
-</body>
-
- <div class="box">
-   <%= form_with model: current_user, url: :update_perfil_user, method: :patch do |form| %>
-     <div class="personal-image">
-       <label class="label">
-         <%= form.file_field :photo %>
-         <figure class="personal-figure">
-           <%if @current_user.photo.attached? %>
-             <%= image_tag @current_user.photo, :class => "personal-avatar", :atl => "Avatar" %>
-           <% else %>
-             <img class="personal-avatar", alt="Avatar" src="https://elaele.com.br/img/anonimo.png">
-           <% end %>
-           <figcaption class="personal-figcaption">
-             <img src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png">
-             <div class="actions">
-               <%= form.submit "Enviar" %>
-             </div>
-   <% end %>
-   </figcaption>
-   </figure>
-   </label>
-   </div>
+</div>

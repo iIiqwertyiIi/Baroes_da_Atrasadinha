@@ -1,1 +1,29 @@
-<h1>teste</h1>
+<div class="box">
+  <%= form_with model: @user, url: :update_perfil_user, method: :patch do |form| %>
+
+    <div class="personal-image">
+      <label class="label">
+        <%= form.file_field :photo %>
+        <figure class="personal-figure">
+        <%if @current_user.photo.attached? %>
+          <%= image_tag @user.photo, :class => "personal-avatar", :atl => "Avatar", width:'200px'  %>
+        <% else %>
+          <img class="personal-avatar", alt="Avatar" src="https://images-na.ssl-images-amazon.com/images/I/518ms9uDxuL._AC_SL1025_.jpg">
+        <% end %>
+        <figcaption class="personal-figcaption">
+          <img src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png">
+          <div class="form-group" id="bio">
+            <%= form.label :biography %>
+            <%= form.text_area :biography, class:'form-control'%>
+          </div>
+          <div class="actions">
+            <%= form.submit "Mudar" %>
+          </div>
+        <% end %>
+        </figcaption>
+        </figure>
+      </label>
+    </div>
+
+
+</div>

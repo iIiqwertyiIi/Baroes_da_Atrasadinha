@@ -14,3 +14,15 @@ body {
   background: linear-gradient(to right, #e96443, #904e95);
   min-height: 100vh
 }
+
+.personal-avatar  {
+  height: 200px !important;
+  width: 200px !important;
+  object-fit: cover;
+}
+
+.img-thumbnail {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}

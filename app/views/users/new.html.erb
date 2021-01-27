@@ -27,6 +27,10 @@
     <%= user.label 'confirme a senha:' %>
     <%= user.password_field :password_confirmation %>
   </div>
+  <div class="field">
+    <%= user.label :biography %>
+    <%= user.text_area :biography %>
+  </div>
   <div class="actions"> <%= user.submit 'Criar' %> </div>
   <div>
     <%= link_to "Entrar", login_path %>
