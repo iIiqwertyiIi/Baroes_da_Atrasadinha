@@ -65,4 +65,7 @@ gem 'sorcery'
 
 gem 'jquery-rails'
 
-gem 'bootstrap', '~> 5.0.0.beta1'
+gem  'bootstrap' ,  '~> 5.0.0.beta1'
+
+gem 'pagy'
+

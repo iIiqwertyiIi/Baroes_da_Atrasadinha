@@ -1,5 +1,7 @@
 {
   "name": "Hello_World",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^4.6.0"
+  }
 }

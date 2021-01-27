@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new', :as => 'login'
   get 'signup' => 'users#new', :as => 'signup'
   get 'perfil(.:id)', to: 'users#show', as: :perfil_user
+  patch 'perfil(.:id)', to: 'users#update', as: :update_perfil_user
   get 'edit', to: 'users#edit', as: :edit_user
   post 'edit', to: 'users#update'
   resources :users
