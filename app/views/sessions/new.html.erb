@@ -1,33 +1,16 @@
-<!--https://bootsnipp.com/snippets/bxzmb-->
-<div class= "tela-de-login" id="login">
-  <div class="container">
-    <div id="login-row" class="row justify-content-center align-items-center">
-      <div id="login-column" class="col-md-6">
-        <div id="login-box" class="col-md-12">
-          <form id="login-form" class="form" action="" method="post">
-          <%= form_tag sessions_path class: "form", id: "login-form" do %>
-            <h3 class="text-center text-info">Login</h3>
-            <div class="form-group">
-              <label for="username" class="text-info">Username:</label><br>
-              <%= email_field_tag :email, params[:email]%>
-            </div>
-              <br>
-            <div class="form-group">
-              <label for="password" class="text-info">Password:</label><br>
-              <%= password_field_tag :password%>
-            </div>
-              <br>
-            <div class="form-group">
-              <%= check_box_tag :remember_me, 1, params[:remember_me], id: "remember-me"%>
-              <%= label_tag :remember_me, "Lembrar de mim"%>
-              <a id="register-link" href="http://127.0.0.1:3000/signup" class="text-info">Registre-se aqui</a><br>
-              <br>
-              <input type="submit" name="submit" class="btn btn-info btn-md" value="Entrar">
-            </div>
-          <% end %>
-          </form>
-        </div>
-      </div>
-    </div>
+<h1>Entrar</h1>
+<%= form_tag sessions_path do %>
+  <div class="field">
+    <%= label_tag :email %>
+    <%= email_field_tag :email, params[:email] %>
   </div>
-</div>
+  <div class="field">
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+  <div class="field">
+    <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+    <%= label_tag :remember_me%>
+  </div>
+  <div class="actions"><%= submit_tag 'login' %></div>
+<% end %>

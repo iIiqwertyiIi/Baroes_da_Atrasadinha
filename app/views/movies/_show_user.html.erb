@@ -3,42 +3,42 @@
 <p><%= @movie.director %></p>
 <p><%= @movie.score %></p>
 <p><%= @movie.date %></p>
-<% @genres.each do |genre| %>
-  <% @movie.genre_id.each do |id| %>
-    <% if id == genre.id %>
-      <p><%= link_to genre.name, genre_path(genre) %></p>
-    <% end %>
-  <% end %>
+<% @movie.genres.each do |genre| %>
+  <p><%= link_to genre.name, genre_path(genre) %></p>
 <% end %>
 <p><%= @movie.description %></p>
-<iframe><%= @movie.trailer %></iframe>
+<iframe width="560" height="315" src=<%= @movie.trailer %> frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<% @reviews.each do |review| %>
-  <% if review.user_id == current_user.id %>
-    <%= link_to 'Escreva sua Review', new_review_path %>
-  <% end %>
-<% end %>
-
-
-<% @reviews.each do |review| %>
-  <% if review.review != nil %>
-    <% @users.each do |user| %>
-      <% if review.user_id == user.id %>
-        <div>
-          <%= user.name %>
-        </div>
-      <% end %>
+<% if @movie.reviews != nil %>
+  <% @movie.reviews.each do |review| %>
+    <% if review.user_id == current_user.id %>
+      <%= link_to 'Escreva sua Review', nova_review_path(@movie.id) %>
     <% end %>
-    <div>
-      <%= review.score %>
-    </div>
-    <div>
-      <%= review.review %>
-    </div>
   <% end %>
-  <% if review.user_id == current_user.id %>
-    <div>
-      <%= link_to 'Editar review', edit_review_path(review) %>
-    </div>
+
+  <% @movie.reviews.each do |review| %>
+    <% if review.review != nil %>
+      <% @users.each do |user| %>
+        <% if review.user_id == user.id %>
+          <div>
+            <%= user.name %>
+          </div>
+        <% end %>
+      <% end %>
+      <div>
+        <%= review.score %>
+      </div>
+      <div>
+        <%= review.review %>
+      </div>
+    <% end %>
+    <% if review.user_id == current_user.id %>
+      <div>
+        <%= link_to 'Editar review', editar_review_path(review) %>
+      </div>
+    <% end %>
+    <%= link_to 'Apagar review', delete_review_path(review) %>
   <% end %>
+<% else %>
+  <%= link_to 'Escreva sua review', nova_review_path(@movie.id) %>
 <% end %>

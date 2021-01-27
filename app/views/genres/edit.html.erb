@@ -1,6 +1,5 @@
 <% if is_admin? == true %>
   <%= form_with model: @genre do |genre| %>
-    <p>Novo Gênero: <%= genre.text_field :name %></p>
-    <%= genre.submit %>
+    <p>Editar gênero <%= genre.text_field :genre %></p>
   <% end %>
 <% end %>

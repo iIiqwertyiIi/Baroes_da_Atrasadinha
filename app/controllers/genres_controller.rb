@@ -5,7 +5,6 @@ class GenresController < ApplicationController
 
   def show
     @genre = Genre.find(params[:id])
-    @movies = Movie.all
   end
 
   def new
@@ -20,6 +19,7 @@ class GenresController < ApplicationController
     rescue => exception
       flash[:notice] = exception
     ensure
+      redirect_to root_url
     end
   end
 
@@ -52,6 +52,6 @@ class GenresController < ApplicationController
   private
 
   def genre_params
-    params.require(:genre).permit(:genres)
+    params.require(:genre).permit(:name)
   end
 end

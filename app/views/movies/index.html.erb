@@ -1,5 +1,7 @@
 <div class="index-movies">
 
+  <%= link_to 'Adicionar novos filmes', new_movie_path %>
+
 <h1 class="titulo"> Teste </h1>
 
   <% @movies.each do |filme| %>
@@ -8,7 +10,7 @@
     <h6>Nota:</h6><p><%= filme.score %></p>
     <h6>Dirigido por:</h6><p><%= filme.director %></p>
     <h6>Sinopse:</h6><p><%= filme.description %></p>
-    <%= link_to 'Mostrar mais', movies_path(filme) %>
+    <%= link_to 'Mostrar mais', movie_path(filme) %>
     <hr class="linha-divisao">
-    <% end %>
-    </div>
+  <% end %>
+</div>
