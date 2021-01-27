@@ -1,7 +1,9 @@
 <div class="index-movies">
   <%if is_admin? == true %>
-  <%= link_to 'Adicionar filme', new_movie_path %>
-    <% end %>
+    <%= link_to 'Adicionar filme', new_movie_path %>
+  <% end %>
+
+  <%= link_to 'Adicionar novos filmes', new_movie_path %>
 
 <h1 class="titulo"> Teste </h1>
 
@@ -13,8 +15,8 @@
     <h6>Sinopse:</h6><p><%= filme.description %></p>
     <%= link_to 'Mostrar mais', movie_path(filme) %>
     <hr class="linha-divisao">
-    <% end %>
-    </div>
+  <% end %>
+</div>
 
 <div class="demo">
   <nav class="pagination-outer" aria-label="Page navigation">

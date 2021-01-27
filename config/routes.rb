@@ -9,12 +9,11 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :movies
-  resources :reviews
   resources :genres
   root 'application#homepage'
-  #get 'movies', to: 'movies#index', :as => 'movie_index'
-  #get 'movies', to: 'movies#create', :as => 'movie_create'
-  resources :movies
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'new_review/:movie_id', to: 'reviews#new', as: :nova_review
+  post 'new_review/:movie_id', to: 'reviews#create'
+  get 'edit_review/:movie_id/:id', to: 'reviews#edit', as: :editar_review
+  patch 'edit_review/:movie_id/:id', to: 'reviews#update'
+  delete 'delete_review/:id', to: 'reviews#destroy', as: :delete_review
 end

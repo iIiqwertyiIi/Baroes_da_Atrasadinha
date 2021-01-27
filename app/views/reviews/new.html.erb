@@ -1,12 +1,14 @@
 <h1>Escreva sua review</h1>
 
-<%= form_with model: @review do |review| %>
+<%= flash[:notice] %>
+
+<%= form_with model: @review, url: nova_review_path, method: :post do |review| %>
   <p>Review:</p>
   <%= review.text_area :review %>
   <p>Score:</p>
   <%= review.number_field :score, max: 10 %>
   <%= review.hidden_field :user_id, value: current_user.id %>
-  <%= review.hidden_field :movie_id, value: params[:id] %>
+  <%= review.hidden_field :movie_id, value: params[:movie_id] %>
 
   <%= review.submit %>
 <% end %>

@@ -19,21 +19,23 @@ class ReviewsController < ApplicationController
     rescue => exception
       flash[:notice] = exception
     ensure
+      redirect_to movie_path(params[:review]['movie_id'])
     end
   end
 
   def edit
-    @review = Review.find(params[:id])
+    @review = Review.find(params[:movie_id])
   end
 
   def update
-    @review = Review.find(params[:id])
+    @review = Review.find(params[:movie_id])
 
     begin
       @review.update!(review_params)
     rescue => exception
       flash[:notice] = exception
     ensure
+      redirect_to movie_path(params[:review]['movie_id'])
     end
   end
 
@@ -45,6 +47,7 @@ class ReviewsController < ApplicationController
     rescue => exception
       flash[:notice] = exception
     ensure
+      redirect_back fallback_location: root_path
     end
   end
 

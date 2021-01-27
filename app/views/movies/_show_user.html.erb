@@ -3,25 +3,18 @@
 <p><%= @movie.director %></p>
 <p><%= @movie.score %></p>
 <p><%= @movie.date %></p>
-<% @genres.each do |genre| %>
-  <% @movie.genre_id.each do |id| %>
-    <% if id == genre.id %>
-      <p><%= link_to genre.name, genre_path(genre) %></p>
-    <% end %>
-  <% end %>
+<% @movie.genres.each do |genre| %>
+  <p><%= link_to genre.name, genre_path(genre) %></p>
 <% end %>
 <p><%= @movie.description %></p>
-<iframe><%= @movie.trailer %></iframe>
+<iframe width="560" height="315" src=<%= @movie.trailer %> frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<% @reviews.each do |review| %>
-  <% if review.user_id == current_user.id %>
-    <%= link_to 'Escreva sua Review', new_review_path %>
-  <% end %>
+<% if @isso == [] %>
+  <p><%= link_to 'Escreva sua review', nova_review_path(@movie.id) %></p>
 <% end %>
 
-
-<% @reviews.each do |review| %>
-  <% if review.review != nil %>
+<% @movie.reviews.each do |review| %>
+  <% if review.review != '' %>
     <% @users.each do |user| %>
       <% if review.user_id == user.id %>
         <div>
@@ -38,7 +31,7 @@
   <% end %>
   <% if review.user_id == current_user.id %>
     <div>
-      <%= link_to 'Editar review', edit_review_path(review) %>
+      <%= link_to 'Editar review', editar_review_path(review) %>
     </div>
   <% end %>
 <% end %>

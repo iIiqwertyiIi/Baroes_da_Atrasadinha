@@ -1,6 +1,6 @@
 <h1>Edite sua review</h1>
 
-<%= form_with model: @review do |review| %>
+<%= form_with model: @review, url: editar_review_path, method: :patch do |review| %>
   <p>Review:</p>
   <%= review.text_area :review %>
   <p>Score:</p>

@@ -1,9 +1,10 @@
-<h1>Filmes de <%= @genre.genres %></h1>
+<h1>Filmes de <%= @genre.name %></h1>
 
-<% @movies.each do |movie| %>
-  <% movie.genre_id.each do |genre| %>
-    <% if genre == @genre.id %>
-      <%= movie.name %>
-    <% end %>
-  <% end %>
+<% @genre.movies.each do |movie| %>
+  <p><%= movie.name %></p>
+<% end %>
+
+<% if is_admin? %>
+  <%= link_to 'Editar Gênero', edit_genre_path %>
+  <%= button_to 'Deletar Gênero', genre_path(@genre), method: :delete %>
 <% end %>
