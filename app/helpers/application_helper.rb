@@ -8,3 +8,6 @@ module ApplicationHelper
     end
   end
 end
+
+include Pagy::Frontend
+
