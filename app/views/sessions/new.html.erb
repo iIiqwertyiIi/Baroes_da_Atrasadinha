@@ -1,16 +1,32 @@
-<h1>Entrar</h1>
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
 <%= form_tag sessions_path do %>
-  <div class="field">
-    <%= label_tag 'email:' %>
-    <%= email_field_tag :email, params[:email] %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="card card-signin flex-row my-5">
+          <div class="card-img-left d-none d-md-flex">
+            <!-- Background image for card set in CSS! -->
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-center">Entrar</h5>
+            <form class="form-signin">
+              <div class="form-label-group">
+                <input type="text" placeholder="Email" class="form-control" <%= text_field_tag :email, params[:email] %>
+              </div>
+
+              <hr>
+
+              <div class="form-label-group">
+                <input type="password" placeholder="Senha" class="form-control" <%= password_field_tag :password, params[:password]%><br>
+              </div><br>
+
+              <button class="btn btn-danger btn-primary btn-block text-uppercase" type="submit">Entrar</button>
+              <a class="d-block text-center mt-2 small" href="<%=signup_path%>">Criar Conta</a>
+              <hr class="my-4">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= label_tag 'senha:' %>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="field">
-    <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-    <%= label_tag 'lembrar de mim.'%>
-  </div>
-  <div class="actions"><%= submit_tag 'login' %></div>
 <% end %>
