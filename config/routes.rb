@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   patch 'perfil(.:id)', to: 'users#update', as: :update_perfil_user
   get 'edit', to: 'users#edit', as: :edit_user
   post 'edit', to: 'users#update'
+  get 'usuarios', to: 'users#index', as: :usuarios
   resources :users
   resources :sessions
   resources :movies
