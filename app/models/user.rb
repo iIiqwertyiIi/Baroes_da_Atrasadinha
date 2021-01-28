@@ -5,5 +5,6 @@ class User < ApplicationRecord
   validates_confirmation_of :password, message: 'Deve corresponder a confirmação.', if: :crypted_password
   validates :email, uniqueness: true
   has_one_attached :photo
-  has_many :movies
+  has_many :reviews
+  has_many :movies, through: :reviews
 end

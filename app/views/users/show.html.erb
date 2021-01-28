@@ -1,6 +1,4 @@
 <div class="tudo">
-  <%= form_with model: current_user, url: :update_perfil_user, method: :patch do |form| %>
-
     <div class="row py-5 px-4">
       <div class="col-md-10 mx-auto">
         <!-- Profile widget -->
@@ -36,12 +34,13 @@
             </div>
             <div class="p-4 rounded shadow-sm bg-light">
               <div class="row">
-                <!-- colocar reviews aqui -->
+               <%@user.reviews.where.not(review: '').each do |review|%><br>
+                <%= render 'reviews/show_review', other: review %>
+                <% end %>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  <% end %>
 </div>
