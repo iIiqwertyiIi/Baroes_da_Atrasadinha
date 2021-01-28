@@ -1,7 +1,11 @@
 class MoviesController < ApplicationController
 
   def index
-    @pagy, @records = pagy(Movie.all, items: 1)
+    if params[:search]
+      @pagy, @records = pagy(Movie.search(params[:search]), items: 2)
+    else
+      @pagy, @records = pagy(Movie.all, items: 2)
+    end
   end
 
   def show
