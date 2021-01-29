@@ -4,10 +4,10 @@
   <% end %>
   <p><%= link_to 'Melhores filmes aqui', surto_path %></p>
 <% i = 0 %>
-  <% while i < @movies.count %>
-    <h4><%= @movies[i].name %></h4>
-    <% if @movies[i].photo.attached? %>
-      <%= image_tag @movies[i].photo, :class => "poster-size" %>
+  <% while i < @records.count %>
+    <h4><%= @records[i].name %></h4>
+    <% if @records[i].photo.attached? %>
+      <%= image_tag @records[i].photo, :class => "poster-size" %>
     <% else %>
       <img src="https://images-na.ssl-images-amazon.com/images/I/518ms9uDxuL._AC_SL1025_.jpg " width="200px" height="200px">
     <% end %>

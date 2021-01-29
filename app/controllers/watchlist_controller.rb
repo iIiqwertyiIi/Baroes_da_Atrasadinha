@@ -3,7 +3,7 @@ class WatchlistController < ApplicationController
     @cria = Watchlist.new(params.require(:watchlist).permit(:user_id, :movie_id))
     begin
       @cria.save!
-      flash[:notice] ='CRIA CRIOU CRIADO COM CRIADOR'
+      flash[:notice] ='Filme adicionado aos assistidos'
     rescue => exception
       flash[:notice] = exception
     ensure
@@ -15,7 +15,7 @@ class WatchlistController < ApplicationController
     @amendoborto = Watchlist.find(params[:id])
     begin
       @amendoborto.destroy!
-      flash[:notice] = 'EU SOU UM AMENDOBORTO YEAH!'
+      flash[:notice] = 'Filme removido dos assistidos'
     rescue => exception
       flash[:notice] = exception
     ensure
