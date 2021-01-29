@@ -70,6 +70,15 @@ ActiveRecord::Schema.define(version: 2021_01_29_002509) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "taggings", force: :cascade do |t|
+    t.integer "genre_id"
+    t.integer "movie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_taggings_on_genre_id"
+    t.index ["movie_id"], name: "index_taggings_on_movie_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "username", null: false

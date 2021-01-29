@@ -21,10 +21,11 @@ class MoviesController < ApplicationController
       unless reviews.count == 0
         @notinhas << reviews.map(&:score).sum / reviews.count
       end
-    if params[:search]
-      @pagy, @records = pagy(Movie.search(params[:search]), items: 2)
-    else
-      @pagy, @records = pagy(Movie.all, items: 2)
+      if params[:search]
+        @pagy, @records = pagy(Movie.search(params[:search]), items: 2)
+      else
+        @pagy, @records = pagy(Movie.all, items: 2)
+      end
     end
   end
 
