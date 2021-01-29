@@ -1,8 +1,8 @@
 <% if is_admin? == true %>
   <h2> Editar filme </h2>
 
-  <%= form_for @movie do |filme| %>
-
+  <%= form_with model: @movie do |filme| %>
+    <%= filme.file_field :photo %>
     <p>Nome: <%= filme.text_field :name %><p>
     <p>Data: <%= filme.date_field :date %><p>
     <%= filme.collection_check_boxes :genre_ids, @genres, :id, :name, required: true %>

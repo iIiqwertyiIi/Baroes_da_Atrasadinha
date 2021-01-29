@@ -1,20 +1,20 @@
 <div class="index-movies">
-  <%if is_admin? == true %>
+  <% if is_admin? == true %>
     <%= link_to 'Adicionar filme', new_movie_path %>
   <% end %>
-
-  <%= link_to 'Adicionar novos filmes', new_movie_path %>
-
-<h1 class="titulo"> Teste </h1>
-
-  <% @movies.each do |filme| %>
-    <h4><%= filme.name %></h4>
-    <h6>Data de lançamento(Brasil):</h6><p><%= filme.date %></p>
-    <h6>Nota:</h6><p><%= filme.score %></p>
-    <h6>Dirigido por:</h6><p><%= filme.director %></p>
-    <h6>Sinopse:</h6><p><%= filme.description %></p>
-    <%= link_to 'Mostrar mais', movie_path(filme) %>
+  <p><%= link_to 'Melhores filmes aqui', surto_path %></p>
+<% i = 0 %>
+  <% while i < @movies.count %>
+    <h4><%= @movies[i].name %></h4>
+    <% if @movies[i].photo.attached? %>
+      <%= image_tag @movies[i].photo, :class => "poster-size" %>
+    <% else %>
+      <img src="https://images-na.ssl-images-amazon.com/images/I/518ms9uDxuL._AC_SL1025_.jpg " width="200px" height="200px">
+    <% end %>
+    <h6>Nota:</h6><p><%= @notinhas[i] %></p>
+    <%= link_to 'Mostrar mais', movie_path(i + 1) %>
     <hr class="linha-divisao">
+    <% i += 1 %>
   <% end %>
 </div>
 

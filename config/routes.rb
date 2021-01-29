@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   get 'edit_review/:movie_id/:id', to: 'reviews#edit', as: :editar_review
   patch 'edit_review/:movie_id/:id', to: 'reviews#update'
   delete 'delete_review/:id', to: 'reviews#destroy', as: :delete_review
+  get 'sorted', to: 'movies#sorted', as: :surto
 end

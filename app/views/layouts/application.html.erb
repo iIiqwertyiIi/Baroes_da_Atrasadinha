@@ -24,10 +24,11 @@
               Gêneros
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <% genres = Genre.order(:name) %>
+              <li><a><%= link_to "Todos os Gêneros", genres_path, class: "dropdown-item" %></a></li>
+              <% genres.each do |genre| %>
+                <li><a><%= link_to genre.name, genre_path(genre), class: "dropdown-item" %></a></li>
+              <% end %>
             </ul>
           </li>
         </ul>

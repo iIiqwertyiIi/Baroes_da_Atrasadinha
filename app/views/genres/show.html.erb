@@ -1,7 +1,7 @@
 <h1>Filmes de <%= @genre.name %></h1>
 
 <% @genre.movies.each do |movie| %>
-  <p><%= movie.name %></p>
+  <p><%= link_to movie.name, movie_path(movie) %></p>
 <% end %>
 
 <% if is_admin? %>

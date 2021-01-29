@@ -19,7 +19,6 @@ class GenresController < ApplicationController
     rescue => exception
       flash[:notice] = exception
     ensure
-      redirect_to root_url
     end
   end
 
