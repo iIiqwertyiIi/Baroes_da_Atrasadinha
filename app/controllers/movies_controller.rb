@@ -21,10 +21,15 @@ class MoviesController < ApplicationController
       unless reviews.count == 0
         @notinhas << reviews.map(&:score).sum / reviews.count
       end
+    if params[:search]
+      @pagy, @records = pagy(Movie.search(params[:search]), items: 2)
+    else
+      @pagy, @records = pagy(Movie.all, items: 2)
     end
   end
 
   def show
+    @watchdoog = Watchlist.new
     @movie = Movie.find(params[:id])
     @users = User.all
     @isso = @movie.reviews.where(user_id: current_user.id)

@@ -1,5 +1,4 @@
-<h1>Criar Conta</h1>
-
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
 <%= form_for @user do |user| %>
   <% if @user.errors.any? %>
     <div class='error_messages'>
@@ -11,28 +10,41 @@
       </ul>
     </div>
   <% end %>
-<div class="field">
-    <%= user.label 'Usuário:' %>
-    <%= user.text_field :username %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-xl-9 mx-auto">
+      <div class="card card-signin flex-row my-5">
+        <div class="card-img-left d-none d-md-flex">
+          <!-- Background image for card set in CSS! -->
+        </div>
+        <div class="card-body">
+          <h5 class="card-title text-center">Criar Conta</h5>
+          <form class="form-signin">
+            <div class="form-label-group">
+              <input type="text" placeholder="Apelido" class="form-control" <%= user.text_field :username, required: true, value: @user.username %> <br>
+            </div>
+
+            <div class="form-label-group">
+              <input type="text" placeholder="Email" class="form-control" <%= user.text_field :email, required: true, value: @user.email %>
+            </div>
+
+            <hr>
+
+            <div class="form-label-group">
+              <input type="password" placeholder="Senha" class="form-control" <%= user.password_field :password, required: true, value: @user.password %><br>
+            </div>
+
+            <div class="form-label-group">
+              <input type="password" placeholder="Confirme a senha" class="form-control" <%= user.password_field :password_confirmation, required: true, value: @user.password%>
+            </div><br>
+
+            <button class="btn btn-danger btn-primary btn-block text-uppercase" type="submit">Registrar</button>
+            <a class="d-block text-center mt-2 small" href="<%=login_path%>">Entrar</a>
+            <hr class="my-4">
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= user.label 'email:'%>
-    <%= user.text_field :email %>
-  </div>
-  <div class="field">
-    <%= user.label 'senha:' %>
-    <%= user.password_field :password %>
-  </div>
-  <div class="field">
-    <%= user.label 'confirme a senha:' %>
-    <%= user.password_field :password_confirmation %>
-  </div>
-  <div class="field">
-    <%= user.label :biography %>
-    <%= user.text_area :biography %>
-  </div>
-  <div class="actions"> <%= user.submit 'Criar' %> </div>
-  <div>
-    <%= link_to "Entrar", login_path %>
-  </div>
+</div>
 <% end %>
