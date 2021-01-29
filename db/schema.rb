@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_26_201656) do
+ActiveRecord::Schema.define(version: 2021_01_29_002509) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -83,6 +83,15 @@ ActiveRecord::Schema.define(version: 2021_01_26_201656) do
     t.text "biography"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
+  end
+
+  create_table "watchlists", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_watchlists_on_movie_id"
+    t.index ["user_id"], name: "index_watchlists_on_user_id"
   end
 
 end

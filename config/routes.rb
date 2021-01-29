@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'edit', to: 'users#edit', as: :edit_user
   post 'edit', to: 'users#update'
   get 'usuarios', to: 'users#index', as: :usuarios
+  post 'watchlist', to: 'watchlist#create', as: :watchlist
+  delete 'watchlist', to: 'watchlist#destroy'
   resources :users
   resources :sessions
   resources :movies
