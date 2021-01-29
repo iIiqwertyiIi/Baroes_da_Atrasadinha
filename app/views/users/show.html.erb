@@ -1,6 +1,4 @@
 <div class="tudo">
-  <%= form_with model: current_user, url: :update_perfil_user, method: :patch do |form| %>
-
     <div class="row py-5 px-4">
       <div class="col-md-10 mx-auto">
         <!-- Profile widget -->
@@ -21,29 +19,42 @@
           </div>
           <div class="bg-light p-4 d-flex justify-content-end text-center">
             <ul class="list-inline mb-0">
-              <div><a href="<%=edit_user_path %>" class="btn btn-outline-danger btn-sm btn-block">Editar perfil</a></div>
+              <a href="<%=edit_user_path %>" class="btn btn-outline-danger btn-sm btn-block">Editar perfil</a>
             </ul>
           </div>
           <div class="px-4 py-3">
-            <h5 class="mb-0">Biografia</h5>
+            <h5 class="mb-0">Biografia:</h5>
             <div class="p-4 rounded shadow-sm bg-light">
-              <div class="form-group">
-                   <p><%=current_user.biography %></p>
-              </div>
-
+              <p><%=current_user.biography %></p>
             </div>
-
+            </div>
+          <div class="py-4 px-4">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+            <h5 class=" mb-0">Wacthlist:</h5>
+            </div>
+            <div class="p-4 rounded shadow-sm bg-light">
+              <div class="bg-white shadow rounded overflow-hidden, px-4 py-3">
+                <ol>
+                  <% current_user.watchlists.each do |movie| %>
+                    <li><h4><%=link_to movie.movie.name, movie_path(movie.movie) %></h4></li>
+                  <% end %>
+                </ol>
+              </div>
             </div>
           </div>
           <div class="py-4 px-4">
             <div class="d-flex align-items-center justify-content-between mb-3">
-              <h5 class="mb-0">Análises</h5><a href="#" class="btn btn-link text-muted">mostrar todas</a>
+              <h5 class="mb-0">Reviews:</h5>
             </div>
-            <div class="row">
-              <!-- colocar reviews aqui -->
+            <div class="p-4 rounded shadow-sm bg-light">
+              <div class="row">
+               <%@user.reviews.where.not(review: '').each do |review|%><br>
+                <%= render 'reviews/show_review', other: review %>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  <% end %>
 </div>

@@ -4,6 +4,10 @@ class UsersController < ApplicationController
     @user =  User.new
   end
 
+  def index
+    @users = User.all
+  end
+
   def edit
     @user = current_user
   end
@@ -26,11 +30,8 @@ class UsersController < ApplicationController
       imagem = params[:user][:photo]
       unless imagem.nil?
         image_change(current_user)
-        redirect_to perfil_user_path
         end
-        current_user.update!({
-          biography: params[:user]['biography']
-        })
+        current_user.update!(user_args)
         flash[:notice] = 'Usuário editado com sucesso'
         redirect_to perfil_user_path
     rescue => err
