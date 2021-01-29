@@ -1,16 +1,15 @@
-class MoviesController < ApplicationController
+# frozen_string_literal: true
 
+class MoviesController < ApplicationController
   def sorted
     @movies = Movie.all
     @notinhas = []
     @movies.each do |movie|
       reviews = movie.reviews
-      unless reviews.count == 0
-        @notinhas << reviews.map(&:score).sum / reviews.count
-      end
+      @notinhas << reviews.map(&:score).sum / reviews.count unless reviews.count.zero?
     end
     @nora_to_ordenada = Hash[(0...@notinhas.count).zip @notinhas]
-    @nora_ordenada = @nora_to_ordenada.sort_by{ |index, nora| nora }.reverse
+    @nora_ordenada = @nora_to_ordenada.sort_by { |_index, nora| nora }.reverse
   end
 
   def index
@@ -18,15 +17,14 @@ class MoviesController < ApplicationController
     @notinhas = []
     @movies.each do |movie|
       reviews = movie.reviews
-      unless reviews.count == 0
-        @notinhas << reviews.map(&:score).sum / reviews.count
-      end
+      @notinhas << reviews.map(&:score).sum / reviews.count unless reviews.count.zero?
       if params[:search]
-        @pagy, @records = pagy(Movie.search(params[:search]), items: 2)
+        @pagy, @records = pagy(Movie.search(params[:search]), items: 5)
       else
-        @pagy, @records = pagy(Movie.all, items: 2)
+        @pagy, @records = pagy(Movie.all, items: 5)
       end
     end
+    @i = 0
   end
 
   def show
@@ -34,16 +32,13 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @users = User.all
     @isso = @movie.reviews.where(user_id: current_user.id)
-    unless @movie.reviews.count == 0
-      @nothinha = @movie.reviews.map(&:score).sum / @movie.reviews.count
-    end
+    @nothinha = @movie.reviews.map(&:score).sum / @movie.reviews.count unless @movie.reviews.count.zero?
   end
 
   def new
     @movie = Movie.new
     @genres = Genre.all
   end
-
 
   def create
     @movie = Movie.new(movie_params)
@@ -52,17 +47,13 @@ class MoviesController < ApplicationController
     begin
       @movie.save!
       imagem = params[:movie][:photo]
-      unless imagem.nil?
-        image_change(@movie)
-      end
-      @old_genres.each do |genre|
-        genre.destroy
-      end
+      image_change(@movie) unless imagem.nil?
+      @old_genres.each(&:destroy)
       @genres.each do |genre|
         GenreMovie.create(genre_id: genre, movie_id: params[:id])
       end
-    rescue => exception
-      flash[:notice] = exception
+    rescue StandardError => e
+      flash[:notice] = e
     ensure
       redirect_to root_url
     end
@@ -80,17 +71,13 @@ class MoviesController < ApplicationController
     begin
       @movie.update!(movie_params)
       imagem = params[:movie][:photo]
-      unless imagem.nil?
-        image_change(@movie)
-      end
-      @old_genres.each do |genre|
-        genre.destroy
-      end
+      image_change(@movie) unless imagem.nil?
+      @old_genres.each(&:destroy)
       @genres.each do |genre|
         GenreMovie.create(genre_id: genre, movie_id: params[:id])
       end
-    rescue => exception
-      flash[:notice] = exception
+    rescue StandardError => e
+      flash[:notice] = e
     ensure
       redirect_to root_url
     end
@@ -101,11 +88,9 @@ class MoviesController < ApplicationController
     @old_genres = GenreMovie.where(movie_id: params[:id])
     begin
       @movie.destroy!
-      @old_genres.each do |genre|
-        genre.destroy
-      end
-    rescue => exception
-      flash[:notice] = exception
+      @old_genres.each(&:destroy)
+    rescue StandardError => e
+      flash[:notice] = e
     ensure
       redirect_to root_url
     end
@@ -120,9 +105,7 @@ class MoviesController < ApplicationController
   def image_change(movie)
     imagem = params[:movie][:photo]
     unless imagem.nil?
-      if movie.photo.attached?
-        movie.photo.purge
-      end
+      movie.photo.purge if movie.photo.attached?
       movie.photo.attach(imagem)
     end
   end
