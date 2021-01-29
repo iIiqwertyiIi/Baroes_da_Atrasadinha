@@ -5,6 +5,7 @@ class MoviesController < ApplicationController
   end
 
   def show
+    @watchdoog = Watchlist.new
     @movie = Movie.find(params[:id])
     @users = User.all
     @isso = @movie.reviews.where(user_id: current_user.id)

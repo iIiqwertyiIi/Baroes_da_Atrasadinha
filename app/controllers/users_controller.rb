@@ -30,7 +30,6 @@ class UsersController < ApplicationController
       imagem = params[:user][:photo]
       unless imagem.nil?
         image_change(current_user)
-        redirect_to perfil_user_path
         end
         current_user.update!(user_args)
         flash[:notice] = 'Usuário editado com sucesso'
