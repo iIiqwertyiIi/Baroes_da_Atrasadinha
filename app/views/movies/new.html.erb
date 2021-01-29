@@ -3,7 +3,7 @@
   <h2> Adicionar novo filme </h2>
 
   <%= form_with model: @movie do |filme| %>
-
+    <%= filme.file_field :photo %>
     <p>Nome: <%= filme.text_field :name %><p>
     <p>Data: <%= filme.date_field :date %><p>
     <%= filme.collection_check_boxes :genre_ids, @genres, :id, :name, required: true %>

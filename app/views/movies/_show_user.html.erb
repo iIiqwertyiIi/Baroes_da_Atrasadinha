@@ -1,7 +1,11 @@
 <h1><%= @movie.name %></h1>
-
+<% if @movie.photo.attached? %>
+  <%= image_tag @movie.photo, :class => "poster" %>
+<% else %>
+  <img src="https://images-na.ssl-images-amazon.com/images/I/518ms9uDxuL._AC_SL1025_.jpg " width="200px" height="200px">
+<% end %>
 <p><%= @movie.director %></p>
-<p><%= @movie.score %></p>
+<p><%= @nothinha %></p>
 <p><%= @movie.date %></p>
 <% @movie.genres.each do |genre| %>
   <p><%= link_to genre.name, genre_path(genre) %></p>
@@ -31,21 +35,34 @@
   <% if review.review != '' %>
     <% @users.each do |user| %>
       <% if review.user_id == user.id %>
+        <% if user.photo.attached? %>
+          <p><%= image_tag user.photo, :class => "personal-avatar img-thumbnail", :atl => "Avatar"%></p>
+        <% else %>
+          <p><img class="personal-avatar", alt="Avatar" src="https://images-na.ssl-images-amazon.com/images/I/518ms9uDxuL._AC_SL1025_.jpg " width="200px" height="200px"></p>
+        <% end %>
         <div>
           <%= user.username %>
+          <br>
         </div>
       <% end %>
     <% end %>
     <div>
-      <%= review.score %>
+      <p>Nota do usuário: <%= review.score %></p>
     </div>
     <div>
+      <br>
       <%= review.review %>
+      <br>
     </div>
   <% end %>
   <% if review.user_id == current_user.id %>
     <div>
       <%= link_to 'Editar review', editar_review_path(review) %>
+      <br>
+    </div>
+    <div>
+      <%= button_to 'Apagar review', delete_review_path(review), method: :delete %>
+      <br>
     </div>
   <% end %>
 <% end %>

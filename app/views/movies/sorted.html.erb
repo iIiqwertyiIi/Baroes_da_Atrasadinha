@@ -1,0 +1,16 @@
+<div class="index-movies">
+
+  <h1>Filminho sortado</h1>
+  <% @nora_ordenada.each do |nora| %>
+    <h4><%= @movies[nora[0]].name %></h4>
+    <% if @movies[nora[0]].photo.attached? %>
+      <%= image_tag @movies[nora[0]].photo, :class => "poster-size" %>
+    <% else %>
+      <img src="https://images-na.ssl-images-amazon.com/images/I/518ms9uDxuL._AC_SL1025_.jpg " width="200px" height="200px">
+    <% end %>
+    <h6>Nota:</h6><p><%= nora[1] %></p>
+    <%= link_to 'Mostrar mais', movie_path(nora[0] + 1) %>
+    <hr class="linha-divisao">
+  <% end %>
+
+</div>
