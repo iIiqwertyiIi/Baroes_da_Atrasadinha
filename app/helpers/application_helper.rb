@@ -1,13 +1,13 @@
-module ApplicationHelper
+# frozen_string_literal: true
 
+module ApplicationHelper
   def is_admin?
-    if current_user.nil? == true or current_user.admin? == false
-      return false
+    if (current_user.nil? == true) || (current_user.admin? == false)
+      false
     elsif current_user.admin? == true
-      return true
+      true
     end
   end
 end
 
 include Pagy::Frontend
-

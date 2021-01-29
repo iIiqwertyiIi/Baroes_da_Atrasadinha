@@ -16,11 +16,11 @@
     <%= overwatch.hidden_field :user_id, value: current_user.id %>
     <%= overwatch.hidden_field :movie_id, value: params[:id] %>
     <div class="actions">
-      <%= overwatch.submit 'adicionar na watchlist' %>
+      <%= overwatch.submit 'Adicionar aos assistidos' %>
     </div>
   <% end %>
 <% else %>
-  <%= link_to 'aborto', watchlist_path(id: Watchlist.where(movie_id: params[:id], user_id: current_user.id).first.id), method: :delete %>
+  <%= button_to 'Remover dos assistidos', watchlist_path(id: Watchlist.where(movie_id: params[:id], user_id: current_user.id).first.id), method: :delete %>
 <% end %>
 
 <p><%= @movie.description %></p>

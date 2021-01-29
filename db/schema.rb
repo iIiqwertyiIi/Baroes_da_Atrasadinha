@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,97 +12,96 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_29_002509) do
-
-  create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
-    t.datetime "created_at", null: false
-    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+ActiveRecord::Schema.define(version: 20_210_129_002_509) do
+  create_table 'active_storage_attachments', force: :cascade do |t|
+    t.string 'name', null: false
+    t.string 'record_type', null: false
+    t.integer 'record_id', null: false
+    t.integer 'blob_id', null: false
+    t.datetime 'created_at', null: false
+    t.index ['blob_id'], name: 'index_active_storage_attachments_on_blob_id'
+    t.index %w[record_type record_id name blob_id], name: 'index_active_storage_attachments_uniqueness',
+                                                    unique: true
   end
 
-  create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
-    t.text "metadata"
-    t.bigint "byte_size", null: false
-    t.string "checksum", null: false
-    t.datetime "created_at", null: false
-    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  create_table 'active_storage_blobs', force: :cascade do |t|
+    t.string 'key', null: false
+    t.string 'filename', null: false
+    t.string 'content_type'
+    t.text 'metadata'
+    t.bigint 'byte_size', null: false
+    t.string 'checksum', null: false
+    t.datetime 'created_at', null: false
+    t.index ['key'], name: 'index_active_storage_blobs_on_key', unique: true
   end
 
-  create_table "genre_movies", force: :cascade do |t|
-    t.integer "genre_id"
-    t.integer "movie_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["genre_id"], name: "index_genre_movies_on_genre_id"
-    t.index ["movie_id"], name: "index_genre_movies_on_movie_id"
+  create_table 'genre_movies', force: :cascade do |t|
+    t.integer 'genre_id'
+    t.integer 'movie_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['genre_id'], name: 'index_genre_movies_on_genre_id'
+    t.index ['movie_id'], name: 'index_genre_movies_on_movie_id'
   end
 
-  create_table "genres", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'genres', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "movies", force: :cascade do |t|
-    t.string "name"
-    t.datetime "date"
-    t.integer "score"
-    t.string "director"
-    t.text "description"
-    t.text "trailer"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'movies', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'date'
+    t.integer 'score'
+    t.string 'director'
+    t.text 'description'
+    t.text 'trailer'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "movie_id"
-    t.integer "score"
-    t.text "review"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_reviews_on_movie_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
+  create_table 'reviews', force: :cascade do |t|
+    t.integer 'user_id'
+    t.integer 'movie_id'
+    t.integer 'score'
+    t.text 'review'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['movie_id'], name: 'index_reviews_on_movie_id'
+    t.index ['user_id'], name: 'index_reviews_on_user_id'
   end
 
-  create_table "taggings", force: :cascade do |t|
-    t.integer "genre_id"
-    t.integer "movie_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["genre_id"], name: "index_taggings_on_genre_id"
-    t.index ["movie_id"], name: "index_taggings_on_movie_id"
+  create_table 'taggings', force: :cascade do |t|
+    t.integer 'genre_id'
+    t.integer 'movie_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['genre_id'], name: 'index_taggings_on_genre_id'
+    t.index ['movie_id'], name: 'index_taggings_on_movie_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", null: false
-    t.string "username", null: false
-    t.string "crypted_password"
-    t.string "salt"
-    t.boolean "admin"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "remember_me_token"
-    t.datetime "remember_me_token_expires_at"
-    t.text "biography"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
+  create_table 'users', force: :cascade do |t|
+    t.string 'email', null: false
+    t.string 'username', null: false
+    t.string 'crypted_password'
+    t.string 'salt'
+    t.boolean 'admin'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'remember_me_token'
+    t.datetime 'remember_me_token_expires_at'
+    t.text 'biography'
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['remember_me_token'], name: 'index_users_on_remember_me_token'
   end
 
-  create_table "watchlists", force: :cascade do |t|
-    t.integer "movie_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_watchlists_on_movie_id"
-    t.index ["user_id"], name: "index_watchlists_on_user_id"
+  create_table 'watchlists', force: :cascade do |t|
+    t.integer 'movie_id'
+    t.integer 'user_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['movie_id'], name: 'index_watchlists_on_movie_id'
+    t.index ['user_id'], name: 'index_watchlists_on_user_id'
   end
-
 end

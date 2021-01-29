@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GenresController < ApplicationController
   def index
     @genres = Genre.all
@@ -16,9 +18,8 @@ class GenresController < ApplicationController
 
     begin
       @genre.save!
-    rescue => exception
-      flash[:notice] = exception
-    ensure
+    rescue StandardError => e
+      flash[:notice] = e
     end
   end
 
@@ -31,9 +32,8 @@ class GenresController < ApplicationController
 
     begin
       @genre.update!(genre_params)
-    rescue => exception
-      flash[:notice] = exception
-    ensure
+    rescue StandardError => e
+      flash[:notice] = e
     end
   end
 
@@ -42,9 +42,8 @@ class GenresController < ApplicationController
 
     begin
       @genre.destroy!
-    rescue => exception
-      flash[:notice] = exception
-    ensure
+    rescue StandardError => e
+      flash[:notice] = e
     end
   end
 

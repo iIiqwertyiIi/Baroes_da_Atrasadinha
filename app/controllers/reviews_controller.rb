@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReviewsController < ApplicationController
   def index
     @reviews = Review.all
@@ -16,8 +18,8 @@ class ReviewsController < ApplicationController
 
     begin
       @review.save!
-    rescue => exception
-      flash[:notice] = exception
+    rescue StandardError => e
+      flash[:notice] = e
     ensure
       redirect_to movie_path(params[:review]['movie_id'])
     end
@@ -32,8 +34,8 @@ class ReviewsController < ApplicationController
 
     begin
       @review.update!(review_params)
-    rescue => exception
-      flash[:notice] = exception
+    rescue StandardError => e
+      flash[:notice] = e
     ensure
       redirect_to movie_path(params[:review]['movie_id'])
     end
@@ -44,8 +46,8 @@ class ReviewsController < ApplicationController
 
     begin
       @review.destroy!
-    rescue => exception
-      flash[:notice] = exception
+    rescue StandardError => e
+      flash[:notice] = e
     ensure
       redirect_back fallback_location: root_path
     end
